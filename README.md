@@ -7,6 +7,8 @@ This repository is to track all the coding questions I am solving.
 - **HackerRank**: Solutions to HackerRank challenges
   - MountBlueJobChallenge: Job challenge problems
 
+- **LeetCode**: All Questions on LeetCode Platform
+
 ## Purpose
 
 This repository serves as a personal collection of coding problems and their solutions, helping me:
