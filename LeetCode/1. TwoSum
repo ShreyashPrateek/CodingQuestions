@@ -16,3 +16,4 @@ class Solution {
     return answer;
     }
 }
+Data Input Comes from main method provided by LeetCode platform.
