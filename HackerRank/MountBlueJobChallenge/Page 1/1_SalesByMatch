@@ -1,0 +1,37 @@
+class Result {
+
+    /*
+     * Complete the 'sockMerchant' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts following parameters:
+     *  1. INTEGER n
+     *  2. INTEGER_ARRAY ar
+     */
+
+    public static int sockMerchant(int n, List<Integer> ar) 
+    {
+        // Set ke through unmatched sock ka track easy hai bucket form meh data rakh skte idr
+        Set<Integer> sock = new HashSet<>();
+        int pairCount = 0;
+        
+        for (int i = 0; i < ar.size(); i++) 
+        {
+            int color = ar.get(i); 
+            
+            // agar match pair mil jaye, pairCount ko increase krna hai and jo sock hai pair ho gya toh remove krna hai
+            if (sock.contains(color)) 
+            {
+            pairCount++;
+            sock.remove(color);
+            }
+            
+            // ye sock ka first color ko add krne ke liye
+            else 
+            {
+            sock.add(color);   
+            }
+        }
+        return pairCount;
+    }
+}
