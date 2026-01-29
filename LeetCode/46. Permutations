@@ -1,0 +1,26 @@
+class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        backtrack(nums, new ArrayList<>(), new boolean[nums.length], result);
+        return result;
+    }
+
+    private void backtrack(int[] nums, List<Integer> current, boolean[] used, List<List<Integer>> result) {
+        // Base case: if current permutation is the same length as nums, add it to the result
+        if (current.size() == nums.length) {
+            result.add(new ArrayList<>(current));
+            return;
+        }
+
+        // Try every unused number in nums
+        for (int i = 0; i < nums.length; i++) {
+            if (used[i]) continue; // skip if already used
+            used[i] = true;
+            current.add(nums[i]);
+            backtrack(nums, current, used, result);
+            // backtrack
+            current.remove(current.size() - 1);
+            used[i] = false;
+        }
+    }
+}
