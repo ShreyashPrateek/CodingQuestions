@@ -1,0 +1,35 @@
+import java.util.Scanner; // Importing Scanner class for user input
+public class MinInArray {
+
+    // Function to find minimum in array
+	int minArray(int [] arr, int size)
+	{
+		int min = arr[0];
+		for(int i=1 ; i<size; i++)
+		{
+			if(arr[i]< min)
+				min = arr[i];
+		}
+	return min;
+	}
+
+	public static void main(String[] args) 
+	{
+		Scanner scan = new Scanner(System.in); // Scanner object to take input
+		
+        // Input size of array
+		System.out.println("Enter Size of Array");
+		int size = scan.nextInt();
+		
+        // Input array elements
+		System.out.println("Enter the array elements");
+		int arr[] = new int [size];
+		for (int i = 0; i < size; i++) {
+            arr[i] = scan.nextInt();
+        }
+		
+		MinInArray m = new MinInArray(); // Creating object of class to call non-static method
+		int ans = m.minArray(arr, size); // Calling minArray method
+		System.out.println("Minimum in array is : " + ans); // Printing the minimum element
+	}
+}
