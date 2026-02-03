@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+public class MaxInArray 
+{
+	// function to find maximum in array
+	int maxElement(int arr[], int size)
+	{
+		int max = arr[0];
+		
+		for (int i = 1; i<size; i++)
+		{
+			if(arr[i]>max)
+				max=arr[i];
+		}
+		return max;
+	}
+	
+	
+	public static void main(String[] args) 
+	{
+        // Creating Scanner object for user input
+		Scanner scan = new Scanner(System.in);
+		
+		// User input size of array
+		System.out.println("Enter size of array: ");
+		int size = scan.nextInt();
+		
+		// User input array elements
+		System.out.println("Enter array elements ");
+		int arr[]= new int [size];
+		
+		for (int i = 0; i<size; i++)
+			arr[i]=scan.nextInt();
+		
+		// Creating object of class to call non-static method
+		MaxInArray m = new MaxInArray();
+
+		// Calling maxElement method and printing the result
+		System.out.println("Maximum element in an array is : "+m.maxElement(arr, size));
+	}
+
+}
