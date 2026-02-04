@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+public class ArrayReverse 
+{
+	// Function to reverse the array
+	void reverse(int arr[],int N)
+	{
+		int start=0;
+		int end = N-1;
+		
+		while(start<end)
+		{
+			arr[start]= arr[start]+ arr[end];
+			arr[end]=arr[start]-arr[end];
+			arr[start]=arr[start]-arr[end];
+			start++;
+			end--;
+		}
+	}
+
+	public static void main(String[] args) 
+	{
+        // Creating Scanner object for user input
+		Scanner sc = new Scanner(System.in);
+		
+		// User input size of array
+		System.out.println("Enter Size of Array");
+		int size = sc.nextInt();
+		
+        // User input array elements
+		System.out.println("Enter the array elements");
+		int arr[] = new int [size];
+		
+		for(int i = 0;i<size;i++)
+		{
+			arr[i]=sc.nextInt();
+		}		
+		
+        // Creating object of class to call non-static method
+		ArrayReverse ar= new ArrayReverse();
+		
+        // Calling reverse method
+		ar.reverse(arr, size);
+		
+        // Printing the reversed array
+		System.out.println("Reverse array is :");
+		for(int i=0;i<size;i++)
+		{
+			System.out.print(arr[i]+" ");
+		}
+		System.out.println(); // for new line
+	}
+}
