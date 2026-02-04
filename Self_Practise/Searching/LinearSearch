@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+public class LinearSearch 
+{	
+    //  Function to perform linear search
+	int searchLinear(int arr[], int size, int key)
+	{
+		for(int i = 0; i<size; i++)
+		{
+			if(arr[i]==key)
+				return i;
+		}
+		return -1;
+	}
+
+    //  Main method to take input and call the search function
+	public static void main(String[] args) 
+	{
+		Scanner scan = new Scanner(System.in);
+		
+		// User input size of array
+		System.out.println("Enter size of array: ");
+		int size = scan.nextInt();
+		
+		// User input array elements
+		System.out.println("Enter array elements ");
+		int arr[]= new int [size];
+		
+		for (int i = 0; i<size; i++)
+			arr[i]=scan.nextInt();
+		
+		// User input element to search
+		System.out.println("Enter element to Search: ");
+		int key = scan.nextInt();
+		
+        // Creating object of class to call non-static method
+		LinearSearch ls = new LinearSearch();
+		
+        // Calling searchLinear method and printing the result
+		System.out.println("Element Found At : "+ls.searchLinear(arr, size, key));
+		
+        // Closing the scanner object
+		scan.close();
+	}
+
+}
