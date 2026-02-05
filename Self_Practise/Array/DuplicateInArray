@@ -1,0 +1,47 @@
+package ArrayQues;
+
+import java.util.Scanner;
+
+public class DuplicateInArray {
+
+	int findDuplicate(int []arr , int size) 
+	{
+	    int ans=0;
+	    
+	    // XOR all array elements
+	    for(int i=0;i<size;i++)
+	    {
+	        ans = ans^arr[i];
+	    }
+	    
+	    // XOR numbers from 1 to size-1
+	    for ( int i=1;i<size;i++)
+	    {
+	    	ans = ans^i;   
+	    }
+	    return ans;
+	}
+
+	
+	public static void main(String[] args) 
+	{
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.println("Enter size of array: ");
+		int size = scan.nextInt();
+		
+		System.out.println("Enter array elements ");
+		int [] arr = new int [size];
+		
+		for(int i=0;i<size;i++)
+		{
+			arr[i]= scan.nextInt();
+		}
+		
+		DuplicateInArray da = new DuplicateInArray();
+		
+		System.out.println("Duplicates is : "+da.findDuplicate(arr, size));
+
+	}
+
+}
