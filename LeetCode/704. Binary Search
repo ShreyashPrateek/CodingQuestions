@@ -1,0 +1,27 @@
+class Solution {
+    public int search(int[] nums, int target) {
+        int start=0;
+        int end = nums.length-1 ; 
+        
+        // Binary Search Implementation
+        while(start<=end) // Loop until the search space is exhausted
+        {
+            int mid = start + (end-start)/2; // To avoid potential overflow
+            if(nums[mid]==target) // Target found
+            {
+                return mid;
+            }
+            else if (target > nums[mid]) // Target is in the right half
+            {
+                start = mid+1;
+                
+            }
+            else // Target is in the left half
+            {
+                end = mid-1;
+            }
+            
+        }
+        return -1; // Target not found in the array
+    }
+}
