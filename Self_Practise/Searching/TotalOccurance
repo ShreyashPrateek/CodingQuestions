@@ -1,0 +1,92 @@
+package Searching_and_sorting;
+
+import java.util.Scanner;
+
+public class totalOccurance 
+{
+	int firstOccuance(int arr[] , int key)
+	{
+		int ans = -1;
+		int start = 0;
+		int end = arr.length -1 ;
+		int mid = start + (end -start)/2;
+		
+		while (start <= end)
+		{
+			if(arr[mid] == key)
+			{
+				ans = mid;
+				end = mid -1;
+			}
+			else if(arr[mid] > key)
+			{
+				end = mid - 1;
+			}
+			else 
+			{
+				start = mid + 1;
+			}
+			mid = start + (end -start)/2;
+		}
+		return ans;
+	}
+	
+	int lastOccuance(int arr[] , int key)
+	{
+		int ans = -1;
+		int start = 0;
+		int end = arr.length -1 ;
+		int mid = start + (end -start)/2;
+		
+		while (start <= end)
+		{
+			if(arr[mid] == key)
+			{
+				ans = mid;
+				start = mid + 1;
+			}
+			else if(arr[mid] > key)
+			{
+				end = mid - 1;
+			}
+			else 
+			{
+				start = mid + 1;
+			}
+			mid = start + (end -start)/2;
+		}
+		return ans;
+	}
+
+	public static void main(String[] args) 
+	{
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.println("Enter Size of array: ");
+		int size = scan.nextInt();
+		
+		System.out.println("Enter array elements ");
+		int arr [] = new int [size];
+		
+		for(int i =0; i<size ; i++)
+		{
+			arr[i] = scan.nextInt();
+		}
+		
+		System.out.println("Enter key :");
+		int key = scan.nextInt();
+		
+		totalOccurance  fnlo = new totalOccurance ();
+		
+		int firstOccurance = fnlo.firstOccuance(arr, key);
+		System.out.println("First Occurance: "+firstOccurance);
+		
+		int lastOccurance = fnlo.lastOccuance(arr, key);
+		System.out.println("Last Occurance: "+lastOccurance);
+		
+        // Calculating total occurance using first and last occurance
+		int totalOccurance = fnlo.lastOccuance(arr, key) - fnlo.firstOccuance(arr, key) + 1;
+		System.out.println("Total number of occurance is : "+totalOccurance);
+	}
+
+}
