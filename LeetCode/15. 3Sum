@@ -1,0 +1,50 @@
+class Solution 
+{
+    public List<List<Integer>> threeSum(int[] nums) 
+    {
+        // List to store the result triplets
+        List<List<Integer>> res = new ArrayList<>();
+        Arrays.sort(nums); // Sort the array to use two-pointer technique and handle duplicates
+
+        // Iterate through the array, fixing one element and using two pointers to find pairs that sum to zero
+        for (int i = 0; i < nums.length - 2; i++) 
+        {
+        if (i > 0 && nums[i] == nums[i - 1]) 
+            continue; // Skip duplicate elements to avoid duplicate triplets
+        
+            int l = i + 1, r = nums.length - 1;
+
+            // Use two pointers to find pairs that sum with nums[i] to zero
+            while (l < r) 
+            {
+                // Calculate the sum of the triplet
+                int sum = nums[i] + nums[l] + nums[r];
+
+                // If the sum is zero, we found a valid triplet
+                if (sum == 0) 
+                {
+                    // Add the triplet to the result list
+                    res.add(Arrays.asList(nums[i], nums[l], nums[r]));
+                    l++; // Move left pointer to the right
+                    r--; // Move right pointer to the left
+
+                    // Skip duplicate elements for left and right pointers
+                    while (l < r && nums[l] == nums[l - 1]) 
+                        l++; // Skip duplicates for left pointer
+
+                    // Skip duplicates for right pointer
+                    while (l < r && nums[r] == nums[r + 1]) 
+                        r--; // Skip duplicates for right pointer
+                }
+                // If the sum is less than zero, we need a larger number, so move the left pointer to the right
+                else if (sum < 0) 
+                    l++; // Move left pointer to the right
+
+                // If the sum is greater than zero, we need a smaller number, so move the right pointer to the left
+                else 
+                    r--;   // Move right pointer to the left
+            }
+        }
+        return res;
+    }
+}
