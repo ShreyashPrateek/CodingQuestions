@@ -1,0 +1,34 @@
+class Solution 
+{
+    public List<List<Integer>> combinationSum3(int k, int n) 
+    {
+        // List to store the final result of combinations
+        List<List<Integer>> result = new ArrayList<>();
+        backtrack(1, k, n, new ArrayList<>(), result); // Start backtracking with the first number, k, n, an empty current combination, and the result list
+        return result;
+    }
+
+    // Backtracking function to find combinations of numbers that sum up to the target
+    private void backtrack(int start, int k, int target, 
+        List<Integer> current, List<List<Integer>> result) // Backtracking function to find combinations of numbers that sum up to the target
+    {
+        // If the target is 0 and we have exactly k numbers in the current combination, we found a valid combination
+        if (target == 0 && current.size() == k) 
+        {
+            result.add(new ArrayList<>(current)); // Add a copy of the current combination to the result list
+            return;
+        }
+
+        // If the target is negative or we have more than k numbers in the current combination, we can stop exploring this path
+        if (target < 0 || current.size() > k) // If the target is negative or we have more than k numbers in the current combination, we can stop exploring this path
+            return;
+
+        // Try adding numbers from 'start' to 9 to the current combination
+        for (int i = start; i <= 9; i++) 
+        {
+            current.add(i); // Add the current number to the combination
+            backtrack(i + 1, k, target - i, current, result); // Recur with the next number, updated target, and current combination
+            current.remove(current.size() - 1); // Backtrack by removing the last added number to explore other combinations
+        }
+    }
+}
