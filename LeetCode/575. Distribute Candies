@@ -1,0 +1,18 @@
+class Solution {
+    public int distributeCandies(int[] candyType) 
+    
+        // Create a HashSet to store unique candy types{
+        Set<Integer> set = new HashSet<>();
+        
+        // Add each candy type to the HashSet
+        for(int candy : candyType){
+            set.add(candy);
+        }
+        
+        // Calculate the number of unique candy types and the maximum candies that can be eaten
+        int uniqueTypes = set.size();
+        int maxCandies = candyType.length / 2; // The maximum number of candies that can be eaten is half of the total candies
+        
+        return Math.min(uniqueTypes, maxCandies); // Return the minimum of unique types and max candies to eat
+    }
+}
